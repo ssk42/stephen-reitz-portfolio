@@ -31,79 +31,75 @@
         <!-- MAIN CONTENT -->
         <main>
             
-            <!-- Loading Spinner -->
-            <template lwc:if={isLoading}>
+            <!-- Loading Spinner (Legacy Syntax) -->
+            <template if:true={isLoading}>
                 <div class="loading">
                     <i class="fa-solid fa-circle-notch fa-spin"></i> Syncing...
                 </div>
             </template>
 
-            <!-- PORTFOLIO TAB -->
-            <template lwc:elseif={isPortfolio}>
-                <h2 class="section-header"><i class="fa-solid fa-code"></i> Latest Projects</h2>
-                <div class="grid">
-                    <template for:each={projects} for:item="p">
-                        <!-- USING THE SLOT COMPONENT -->
-                        <ui-card key={p.id}>
-                            
-                            <!-- Slot: Header -->
-                            <div slot="header">
-                                <span class={p.cssClass}>
-                                    <i class={p.icon}></i> {p.lang}
-                                </span>
-                                <span class="stars">
-                                    <i class="fa-solid fa-star"></i> {p.stars}
-                                </span>
-                            </div>
+            <!-- Content Wrapper (Only show when NOT loading) -->
+            <template if:false={isLoading}>
 
-                            <!-- Slot: Body (Default) -->
-                            <h3>{p.title}</h3>
-                            <p>{p.desc}</p>
+                <!-- PORTFOLIO TAB -->
+                <template if:true={isPortfolio}>
+                    <h2 class="section-header"><i class="fa-solid fa-code"></i> Latest Projects</h2>
+                    <div class="grid">
+                        <template for:each={projects} for:item="p">
+                            <ui-card key={p.id}>
+                                <div slot="header">
+                                    <span class={p.cssClass}>
+                                        <i class={p.icon}></i> {p.lang}
+                                    </span>
+                                    <span class="stars">
+                                        <i class="fa-solid fa-star"></i> {p.stars}
+                                    </span>
+                                </div>
+                                <h3>{p.title}</h3>
+                                <p>{p.desc}</p>
+                                <div slot="footer" class="footer-flex">
+                                    <span>Updated Recently</span>
+                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                </div>
+                            </ui-card>
+                        </template>
+                    </div>
+                </template>
 
-                            <!-- Slot: Footer -->
-                            <div slot="footer" class="footer-flex">
-                                <span>Updated Recently</span>
-                                <i class="fa-solid fa-arrow-right-long"></i>
-                            </div>
+                <!-- BLOG TAB -->
+                <template if:true={isBlog}>
+                    <h2 class="section-header"><i class="fa-solid fa-book-open"></i> The Dev Log</h2>
+                    <div class="list-layout">
+                        <template for:each={blogs} for:item="post">
+                            <ui-card key={post.id}>
+                                <div slot="header" class="blog-meta">
+                                    <span class="date">{post.date}</span>
+                                    <span class="read-time"><i class="fa-regular fa-clock"></i> {post.readTime}</span>
+                                </div>
+                                <h3>{post.title}</h3>
+                                <p>{post.desc}</p>
+                                <div slot="footer">
+                                    <a href="#" class="read-more">Read Article</a>
+                                </div>
+                            </ui-card>
+                        </template>
+                    </div>
+                </template>
 
+                <!-- ABOUT TAB -->
+                <template if:true={isAbout}>
+                    <div class="grid">
+                        <ui-card>
+                            <h3 slot="header"><i class="fa-solid fa-person-running"></i> The Runner</h3>
+                            <p>Leading hill repeats with the NoMa Run Club. I treat running metrics like server logs—always looking for optimization.</p>
                         </ui-card>
-                    </template>
-                </div>
-            </template>
-
-            <!-- BLOG TAB -->
-            <template lwc:elseif={isBlog}>
-                <h2 class="section-header"><i class="fa-solid fa-book-open"></i> The Dev Log</h2>
-                <div class="list-layout">
-                    <template for:each={blogs} for:item="post">
-                        <ui-card key={post.id}>
-                            <div slot="header" class="blog-meta">
-                                <span class="date">{post.date}</span>
-                                <span class="read-time"><i class="fa-regular fa-clock"></i> {post.readTime}</span>
-                            </div>
-                            <h3>{post.title}</h3>
-                            <p>{post.desc}</p>
-                            <div slot="footer">
-                                <a href="#" class="read-more">Read Article</a>
-                            </div>
+                        <ui-card>
+                            <h3 slot="header"><i class="fa-solid fa-dice-d20"></i> The Dungeon Master</h3>
+                            <p>Calculating statistical probabilities for D&D. Data governance lessons often apply to DMing: keep your schemas clean.</p>
                         </ui-card>
-                    </template>
-                </div>
-            </template>
+                    </div>
+                </template>
 
-            <!-- ABOUT TAB -->
-            <template lwc:else>
-                <!-- Using the same card component for About Me sections! -->
-                <div class="grid">
-                    <ui-card>
-                        <h3 slot="header"><i class="fa-solid fa-person-running"></i> The Runner</h3>
-                        <p>Leading hill repeats with the NoMa Run Club. I treat running metrics like server logs—always looking for optimization.</p>
-                    </ui-card>
-                    <ui-card>
-                        <h3 slot="header"><i class="fa-solid fa-dice-d20"></i> The Dungeon Master</h3>
-                        <p>Calculating statistical probabilities for D&D. Data governance lessons often apply to DMing: keep your schemas clean.</p>
-                    </ui-card>
-                </div>
             </template>
 
         </main>
