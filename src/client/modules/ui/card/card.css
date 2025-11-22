@@ -1,0 +1,37 @@
+.card-container {
+    background-color: #222;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.card-container:hover {
+    transform: translateY(-4px);
+    border-color: #00a1e0; /* Salesforce Blue Hover */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-body {
+    flex-grow: 1; /* Pushes footer down */
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: #bbb;
+}
+
+.card-footer {
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+    font-size: 0.85rem;
+    color: #666;
+}

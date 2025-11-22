@@ -1,0 +1,20 @@
+<template>
+    <div class="card-container">
+        
+        <!-- Header Slot: Good for Badges, Stars, Dates -->
+        <div class="card-header">
+            <slot name="header"></slot>
+        </div>
+
+        <!-- Default Slot: The Main Content (Title, Description) -->
+        <div class="card-body">
+            <slot></slot>
+        </div>
+
+        <!-- Footer Slot: Good for 'Read More' links or metadata -->
+        <div class="card-footer">
+            <slot name="footer"></slot>
+        </div>
+        
+    </div>
+</template>
