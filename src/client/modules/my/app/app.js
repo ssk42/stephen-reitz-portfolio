@@ -30,6 +30,9 @@ export default class App extends LightningElement {
     }
 
     loadData() {
+        // Base URL for your GitHub
+        const ghBase = 'https://github.com/ssk42';
+
         this.projects = [
             {
                 id: 1,
@@ -37,8 +40,9 @@ export default class App extends LightningElement {
                 desc: 'Modular YAML config for GitHub Actions to automate Salesforce deployments.',
                 lang: 'Apex',
                 stars: 12,
-                icon: 'fa-brands fa-salesforce', // FontAwesome Class
-                cssClass: 'badge badge-blue'
+                icon: 'fa-brands fa-salesforce',
+                cssClass: 'badge badge-blue',
+                url: `${ghBase}/SFDX-CI-PIPELINE`
             },
             {
                 id: 2,
@@ -47,7 +51,8 @@ export default class App extends LightningElement {
                 lang: 'Swift',
                 stars: 45,
                 icon: 'fa-brands fa-app-store-ios',
-                cssClass: 'badge badge-orange'
+                cssClass: 'badge badge-orange',
+                url: `${ghBase}/IOS-T9-KEYBOARD`
             },
             {
                 id: 3,
@@ -56,7 +61,8 @@ export default class App extends LightningElement {
                 lang: 'AI / Apex',
                 stars: 22,
                 icon: 'fa-solid fa-robot',
-                cssClass: 'badge badge-purple'
+                cssClass: 'badge badge-purple',
+                url: `${ghBase}/OPENAI-APEX-WRAPPER`
             }
         ];
 
@@ -66,14 +72,16 @@ export default class App extends LightningElement {
                 title: 'Dungeon Master Your Data',
                 desc: 'Governance lessons from running a chaotic D&D campaign.',
                 date: 'Nov 15, 2025',
-                readTime: '6 min'
+                readTime: '6 min',
+                url: '#'
             },
             {
                 id: 2,
                 title: 'Refactoring Legacy Apex',
                 desc: 'Strategies for breaking down God Classes without breaking Prod.',
                 date: 'Oct 28, 2025',
-                readTime: '12 min'
+                readTime: '12 min',
+                url: '#'
             }
         ];
     }

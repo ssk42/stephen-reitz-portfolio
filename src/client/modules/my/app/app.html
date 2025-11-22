@@ -22,23 +22,28 @@
             <p class="subtitle">Sr. Salesforce Developer | AI Integrator | Cloud Enthusiast</p>
             
             <div class="social-links">
-                <a href="#"><i class="fa-brands fa-github"></i> GitHub</a>
-                <a href="#"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                <a href="#"><i class="fa-solid fa-envelope"></i> Email</a>
+                <!-- UPDATED LINKS -->
+                <a href="https://github.com/ssk42" target="_blank">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+                <a href="https://linkedin.com/in/stephenreitz" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="mailto:Stephen.T.Reitz@gmail.com">
+                    <i class="fa-solid fa-envelope"></i> Email
+                </a>
             </div>
         </header>
 
         <!-- MAIN CONTENT -->
         <main>
             
-            <!-- Loading Spinner (Legacy Syntax) -->
             <template if:true={isLoading}>
                 <div class="loading">
                     <i class="fa-solid fa-circle-notch fa-spin"></i> Syncing...
                 </div>
             </template>
 
-            <!-- Content Wrapper (Only show when NOT loading) -->
             <template if:false={isLoading}>
 
                 <!-- PORTFOLIO TAB -->
@@ -46,22 +51,25 @@
                     <h2 class="section-header"><i class="fa-solid fa-code"></i> Latest Projects</h2>
                     <div class="grid">
                         <template for:each={projects} for:item="p">
-                            <ui-card key={p.id}>
-                                <div slot="header">
-                                    <span class={p.cssClass}>
-                                        <i class={p.icon}></i> {p.lang}
-                                    </span>
-                                    <span class="stars">
-                                        <i class="fa-solid fa-star"></i> {p.stars}
-                                    </span>
-                                </div>
-                                <h3>{p.title}</h3>
-                                <p>{p.desc}</p>
-                                <div slot="footer" class="footer-flex">
-                                    <span>Updated Recently</span>
-                                    <i class="fa-solid fa-arrow-right-long"></i>
-                                </div>
-                            </ui-card>
+                            <!-- Wrapped Card in Anchor Tag -->
+                            <a key={p.id} href={p.url} target="_blank" class="card-link">
+                                <ui-card>
+                                    <div slot="header">
+                                        <span class={p.cssClass}>
+                                            <i class={p.icon}></i> {p.lang}
+                                        </span>
+                                        <span class="stars">
+                                            <i class="fa-solid fa-star"></i> {p.stars}
+                                        </span>
+                                    </div>
+                                    <h3>{p.title}</h3>
+                                    <p>{p.desc}</p>
+                                    <div slot="footer" class="footer-flex">
+                                        <span>View Code</span>
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                    </div>
+                                </ui-card>
+                            </a>
                         </template>
                     </div>
                 </template>
@@ -71,17 +79,19 @@
                     <h2 class="section-header"><i class="fa-solid fa-book-open"></i> The Dev Log</h2>
                     <div class="list-layout">
                         <template for:each={blogs} for:item="post">
-                            <ui-card key={post.id}>
-                                <div slot="header" class="blog-meta">
-                                    <span class="date">{post.date}</span>
-                                    <span class="read-time"><i class="fa-regular fa-clock"></i> {post.readTime}</span>
-                                </div>
-                                <h3>{post.title}</h3>
-                                <p>{post.desc}</p>
-                                <div slot="footer">
-                                    <a href="#" class="read-more">Read Article</a>
-                                </div>
-                            </ui-card>
+                            <a key={post.id} href={post.url} class="card-link">
+                                <ui-card>
+                                    <div slot="header" class="blog-meta">
+                                        <span class="date">{post.date}</span>
+                                        <span class="read-time"><i class="fa-regular fa-clock"></i> {post.readTime}</span>
+                                    </div>
+                                    <h3>{post.title}</h3>
+                                    <p>{post.desc}</p>
+                                    <div slot="footer">
+                                        <span class="read-more">Read Article</span>
+                                    </div>
+                                </ui-card>
+                            </a>
                         </template>
                     </div>
                 </template>
