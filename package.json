@@ -33,7 +33,7 @@
     },
     "repository": "ssk42/stephen-reitz-portfolio",
     "scripts": {
-        "build": "lwc-services build -m production",
+        "build": "NODE_OPTIONS=--openssl-legacy-provider lwc-services build -m production",
         "build:development": "lwc-services build",
         "lint": "eslint ./src/**/*.js",
         "precommit": "npm run prettier:verify && [ $? -eq 0 ] && npm run lint",
